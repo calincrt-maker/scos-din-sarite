@@ -12,19 +12,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentActiveIndex = 0;
 
-  // BUILD ALL SLIDES VERTICALLY IN THE SCROLL CONTAINER
   function buildAllSlides() {
     viewportContainer.innerHTML = '';
     sideDotsNav.innerHTML = '';
 
     data.slides.forEach((slide, idx) => {
-      // 1. Create section container
       const section = document.createElement('section');
       section.className = 'slide-section';
       section.id = `slide-${idx}`;
       section.setAttribute('data-index', idx);
 
       let bodyHTML = '';
+      const isFirstOrLast = (idx === 0 || idx === totalSlides - 1);
+
+      // Intermediate slide logo badge (Slides 2-12)
+      const intermediateBadge = !isFirstOrLast ? `
+        <div class="intermediate-logo-badge">
+          <img src="assets/logo_digi24_hd.png" alt="Digi24" class="inter-logo-digi">
+          <img src="assets/logo_hlm_round_minimal.png" alt="HLM Agency" class="inter-logo-hlm">
+        </div>
+      ` : '';
+
+      // Centered 3-logo cluster for Cover & Closing
+      const logoCluster = `
+        <div class="centered-logo-cluster">
+          <img src="assets/logo_digi24_hd.png" alt="Digi24" class="logo-item-digi">
+          <div class="logo-divider"></div>
+          <img src="assets/logo_headline_management.png" alt="Headline Management Agency" class="logo-item-hlm-full">
+          <div class="logo-divider"></div>
+          <img src="assets/logo_headline_production_hub.png" alt="Headline Production Hub" class="logo-item-hub-full">
+        </div>
+      `;
 
       switch (slide.layout) {
         case 'cover':
@@ -44,11 +62,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
               </div>
             </div>
+            ${logoCluster}
           `;
           break;
 
         case 'combined-context-concept':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -80,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'feature-split':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -103,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'portrait-spotlight':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -124,6 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'tri-cards':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -143,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'stats-grid':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -171,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'gallery-3col':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -194,6 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'brand-pillars':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -215,6 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'ecosystem-4col':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -235,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'media-table':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -267,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'pricing-card':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -294,6 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         case 'emotion-quote':
           bodyHTML = `
+            ${intermediateBadge}
             <div class="slide-tag">${slide.tag}</div>
             <h2 class="slide-header-title">${slide.title}</h2>
             <p class="slide-header-sub">${slide.subtitle}</p>
@@ -332,6 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="contact-detail" style="font-size:11px; color:var(--text-muted);">${slide.contact.web} • ${slide.contact.fb}</div>
               </div>
             </div>
+            ${logoCluster}
           `;
           break;
       }
@@ -345,7 +376,6 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       viewportContainer.appendChild(section);
 
-      // 2. Create side dot indicator
       const dot = document.createElement('div');
       dot.className = `dot-item ${idx === 0 ? 'active' : ''}`;
       dot.title = `Slide ${idx + 1}: ${slide.title}`;
@@ -354,7 +384,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // SCROLL TO SPECIFIC SLIDE BY INDEX
   function scrollToSlide(idx) {
     if (idx < 0) idx = 0;
     if (idx >= totalSlides) idx = totalSlides - 1;
@@ -364,7 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // INTERSECTION OBSERVER TO TRACK CURRENT VISIBLE SLIDE ON SCROLL
   const observerOptions = {
     root: viewportContainer,
     threshold: 0.5
@@ -385,17 +413,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const pct = ((index + 1) / totalSlides) * 100;
     progressFill.style.width = `${pct}%`;
 
-    // Update side dots
     const dots = sideDotsNav.querySelectorAll('.dot-item');
     dots.forEach((dot, dIdx) => {
       dot.classList.toggle('active', dIdx === index);
     });
 
-    // Update overview modal
     updateOverviewActiveState();
   }
 
-  // NAVIGATION BUTTONS
   document.getElementById('btnNext').addEventListener('click', () => {
     scrollToSlide(currentActiveIndex + 1);
   });
@@ -403,7 +428,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollToSlide(currentActiveIndex - 1);
   });
 
-  // OVERVIEW GRID MODAL
   function renderOverviewGrid() {
     overviewGrid.innerHTML = data.slides.map((s, idx) => `
       <div class="thumb-card ${idx === currentActiveIndex ? 'active' : ''}" data-index="${idx}">
@@ -467,7 +491,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.removeChild(link);
   });
 
-  // KEYBOARD NAVIGATION (UP/DOWN & LEFT/RIGHT & SPACE)
   window.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'PageDown') {
       e.preventDefault();
@@ -488,7 +511,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // INITIALIZE
   buildAllSlides();
   document.querySelectorAll('.slide-section').forEach(sec => observer.observe(sec));
   updateActiveState(0);

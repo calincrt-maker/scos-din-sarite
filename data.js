@@ -238,7 +238,7 @@ window.presentationData = {
         perInsertionAvg: "~ € 72 NET / INSERȚIE TV",
         inclusions: [
           "708 Inserții TV totale pe parcursul celor 12 săptămâni de difuzare.",
-          "Exclusivitate pe categorie de produs / industrie (la nivel de sponsor principal).",
+          "Exclusivitate pe categorie comercială (la nivel de sponsor principal).",
           "Pachetul complet de 96 inserții nocturne pe slotul de Duminică oferit gratuit (BONUS).",
           "420 promo-uri TV difuzate pe rețeaua națională Digi24 (35 promo-uri / săptămână).",
           "Raportare post-campanie și certificate de difuzare emise de Digi24."
@@ -271,7 +271,6 @@ window.presentationData = {
         web: "www.digi24.ro",
         fb: "facebook.com/Digi24HD"
       },
-      logo: "assets/digi24_logo.png",
       layout: "closing"
     }
   ]

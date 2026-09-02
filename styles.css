@@ -58,7 +58,7 @@ html, body {
               var(--bg-dark);
 }
 
-/* TOP NAVBAR (FIXED ON SCROLL) */
+/* TOP NAVBAR */
 .top-nav {
   height: 56px;
   padding: 0 24px;
@@ -180,11 +180,77 @@ html, body {
   flex-direction: column;
 }
 
+/* INTERMEDIATE CO-BRANDING CORNER LOGOS (SLIDES 2-12) */
+.intermediate-logo-badge {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 50;
+  background: rgba(14, 16, 23, 0.7);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border-card);
+  backdrop-filter: blur(8px);
+}
+
+.inter-logo-digi {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.inter-logo-hlm {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* CENTERED 3-LOGO CLUSTER FOR COVER (SLIDE 1) AND CLOSING (SLIDE 13) */
+.centered-logo-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 12px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  margin-top: auto;
+  box-shadow: var(--shadow-card);
+}
+
+.logo-item-digi {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-item-hlm-full {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-item-hub-full {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 /* SLIDE LAYOUT CONTENT */
 .slide-content {
   width: 100%;
   height: 100%;
-  padding: 40px 52px;
+  padding: 38px 48px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -202,17 +268,19 @@ html, body {
 
 .slide-header-title {
   font-family: var(--font-heading);
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 700;
   color: var(--text-white);
   line-height: 1.25;
   margin-bottom: 4px;
+  max-width: 85%;
 }
 
 .slide-header-sub {
   font-size: 13px;
   color: var(--text-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  max-width: 85%;
 }
 
 .slide-body {
@@ -228,7 +296,7 @@ html, body {
 .layout-cover {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 36px;
+  gap: 32px;
   height: 100%;
   align-items: center;
 }
@@ -241,19 +309,19 @@ html, body {
 
 .cover-title {
   font-family: var(--font-heading);
-  font-size: 40px;
+  font-size: 38px;
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-white);
-  margin: 14px 0;
+  margin: 12px 0;
   letter-spacing: -0.5px;
 }
 
 .cover-desc {
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 
 .cover-pills {
@@ -282,9 +350,10 @@ html, body {
 .cover-img-wrapper {
   width: 100%;
   height: 100%;
-  max-height: 380px;
+  max-height: 350px;
   border-radius: var(--radius-md);
   overflow: hidden;
+  position: relative;
   border: 1px solid var(--border-card);
   box-shadow: var(--shadow-glow);
   background: #000;
@@ -302,7 +371,7 @@ html, body {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   backdrop-filter: blur(10px);
@@ -320,15 +389,15 @@ html, body {
   font-weight: 700;
   letter-spacing: 1.5px;
   color: var(--red-neon);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--text-white);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .card-text {
@@ -356,7 +425,7 @@ html, body {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-sm);
-  padding: 14px 18px;
+  padding: 12px 16px;
 }
 
 .feature-item-title {
@@ -582,7 +651,7 @@ html, body {
 
 .gallery-card {
   background: var(--bg-card);
-  border: 2px solid var(--border-white) !important; /* SYMMETRICAL WHITE BORDER ON ALL 3 CARDS */
+  border: 2px solid var(--border-white) !important;
   border-radius: var(--radius-md);
   overflow: hidden;
   display: flex;
@@ -899,30 +968,30 @@ html, body {
 
 .closing-title {
   font-family: var(--font-heading);
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 700;
   color: var(--text-white);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .closing-sub {
-  font-size: 16px;
+  font-size: 15px;
   color: var(--red-soft);
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .contact-card-box {
   background: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: var(--radius-md);
-  padding: 24px 40px;
+  padding: 20px 36px;
   display: flex;
   flex-direction: column;
   gap: 6px;
   align-items: center;
 }
 
-/* FLOATING SIDE INDICATORS FOR VERTICAL SCROLLING */
+/* FLOATING SIDE INDICATORS */
 .side-dots-nav {
   position: fixed;
   right: 20px;
@@ -1093,9 +1162,7 @@ html, body {
   overflow: hidden;
 }
 
-/* ==========================================
-   MOBILE & TABLET RESPONSIVE OPTIMIZATION
-   ========================================== */
+/* MOBILE RESPONSIVE */
 @media (max-width: 900px) {
   .top-nav {
     padding: 0 14px;
@@ -1109,6 +1176,24 @@ html, body {
 
   .side-dots-nav {
     display: none;
+  }
+
+  .intermediate-logo-badge {
+    top: 14px;
+    right: 14px;
+    padding: 4px 10px;
+  }
+  .inter-logo-digi {
+    height: 18px;
+  }
+  .inter-logo-hlm {
+    height: 20px;
+  }
+
+  .centered-logo-cluster {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 10px 16px;
   }
 
   .slide-section {

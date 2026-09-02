@@ -32,7 +32,7 @@ def create_deck():
         fill.fore_color.rgb = color
 
     def add_header(slide, category, title):
-        cat_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.5), Inches(11.733), Inches(0.4))
+        cat_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.45), Inches(9.5), Inches(0.4))
         tf_cat = cat_box.text_frame
         tf_cat.word_wrap = True
         tf_cat.margin_left = tf_cat.margin_top = tf_cat.margin_right = tf_cat.margin_bottom = 0
@@ -43,16 +43,22 @@ def create_deck():
         p_cat.font.bold = True
         p_cat.font.color.rgb = RED_ACCENT
 
-        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.9), Inches(11.733), Inches(0.8))
+        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.85), Inches(9.5), Inches(0.8))
         tf_title = title_box.text_frame
         tf_title.word_wrap = True
         tf_title.margin_left = tf_title.margin_top = tf_title.margin_right = tf_title.margin_bottom = 0
         p_title = tf_title.paragraphs[0]
         p_title.text = title
         p_title.font.name = FONT_TITLE
-        p_title.font.size = Pt(24)
+        p_title.font.size = Pt(23)
         p_title.font.bold = True
         p_title.font.color.rgb = WHITE
+
+        # Intermediate Header Co-branding (Digi24 + HLM Minimalist Round Logo)
+        if os.path.exists("assets/logo_digi24_hd.png"):
+            slide.shapes.add_picture("assets/logo_digi24_hd.png", Inches(11.0), Inches(0.4), Inches(0.65), Inches(0.65))
+        if os.path.exists("assets/logo_hlm_round_minimal.png"):
+            slide.shapes.add_picture("assets/logo_hlm_round_minimal.png", Inches(11.85), Inches(0.4), Inches(0.65), Inches(0.65))
 
     def add_card(slide, left, top, width, height, bg_color=CARD_BG, border_color=CARD_BORDER):
         shape = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
@@ -66,7 +72,7 @@ def create_deck():
         return shape
 
     # ==========================================
-    # SLIDE 1: COVER
+    # SLIDE 1: COVER (WITH ALL 3 CENTRED LOGOS)
     # ==========================================
     s1 = prs.slides.add_slide(blank_layout)
     set_background(s1)
@@ -76,9 +82,9 @@ def create_deck():
         cover_img_path = "assets/serghei_hero_studio.png"
 
     if os.path.exists(cover_img_path):
-        s1.shapes.add_picture(cover_img_path, Inches(6.2), Inches(1.1), Inches(6.5), Inches(4.8))
+        s1.shapes.add_picture(cover_img_path, Inches(6.2), Inches(0.9), Inches(6.5), Inches(4.8))
 
-    tb = s1.shapes.add_textbox(Inches(0.8), Inches(1.5), Inches(5.2), Inches(4.5))
+    tb = s1.shapes.add_textbox(Inches(0.8), Inches(1.3), Inches(5.2), Inches(4.5))
     tf = tb.text_frame
     tf.word_wrap = True
     
@@ -88,7 +94,7 @@ def create_deck():
     p.font.size = Pt(11)
     p.font.bold = True
     p.font.color.rgb = RED_ACCENT
-    p.space_after = Pt(14)
+    p.space_after = Pt(12)
 
     p2 = tf.add_paragraph()
     p2.text = "SCOS DIN SĂRITE\nCU SERGHEI"
@@ -96,24 +102,24 @@ def create_deck():
     p2.font.size = Pt(38)
     p2.font.bold = True
     p2.font.color.rgb = WHITE
-    p2.space_after = Pt(18)
+    p2.space_after = Pt(16)
 
     p3 = tf.add_paragraph()
     p3.text = "O perspectivă inteligentă și lucidă asupra cotidianului. Parteneriat comercial de nivel premium pe Digi24."
     p3.font.name = FONT_MAIN
     p3.font.size = Pt(13)
     p3.font.color.rgb = GRAY_LIGHT
-    p3.space_after = Pt(24)
 
-    add_card(s1, Inches(0.8), Inches(6.3), Inches(11.733), Inches(0.7), bg_color=CARD_BG, border_color=CARD_BORDER)
-    tb_ft = s1.shapes.add_textbox(Inches(1.0), Inches(6.4), Inches(11.333), Inches(0.5))
-    tf_ft = tb_ft.text_frame
-    p_ft = tf_ft.paragraphs[0]
-    p_ft.text = "FORMAT: 50 MINUTĂ SĂPTĂMÂNAL   |   PREMIERĂ: VINERI 20:00   |   12 EDIȚII   |   LANSARE: SEPTEMBRIE 2026"
-    p_ft.font.name = FONT_MAIN
-    p_ft.font.size = Pt(11)
-    p_ft.font.bold = True
-    p_ft.font.color.rgb = GRAY_LIGHT
+    # Footer Card container for centered logos
+    add_card(s1, Inches(0.8), Inches(6.0), Inches(11.733), Inches(1.1), bg_color=CARD_BG, border_color=CARD_BORDER)
+
+    # 3 Centered Logos on Cover: Digi24 | Headline Management | Headline Production Hub
+    if os.path.exists("assets/logo_digi24_hd.png"):
+        s1.shapes.add_picture("assets/logo_digi24_hd.png", Inches(1.6), Inches(6.15), Inches(0.8), Inches(0.8))
+    if os.path.exists("assets/logo_headline_management.png"):
+        s1.shapes.add_picture("assets/logo_headline_management.png", Inches(3.6), Inches(6.3), Inches(3.6), Inches(0.5))
+    if os.path.exists("assets/logo_headline_production_hub.png"):
+        s1.shapes.add_picture("assets/logo_headline_production_hub.png", Inches(8.2), Inches(6.3), Inches(3.6), Inches(0.5))
 
     # ==========================================
     # SLIDE 2: COMBINED CONTEXT & CONCEPT EDITORIAL
@@ -371,7 +377,7 @@ def create_deck():
         p.space_after = Pt(6)
 
     # ==========================================
-    # SLIDE 7: THE EXPERIENCE / GALLERY (SYMMETRIC WHITE FRAMES ON ALL 3 CARDS)
+    # SLIDE 7: THE EXPERIENCE / GALLERY (SYMMETRIC WHITE BORDERS)
     # ==========================================
     s7 = prs.slides.add_slide(blank_layout)
     set_background(s7)
@@ -384,7 +390,6 @@ def create_deck():
     ]
     for i, (img_path, caption) in enumerate(images_g):
         left = Inches(0.8 + i * 4.0)
-        # Symmetrical white card border around all 3 cards:
         card = add_card(s7, left, Inches(2.0), Inches(3.733), Inches(4.8), bg_color=CARD_BG, border_color=WHITE)
         card.line.width = Pt(2)
 
@@ -632,13 +637,13 @@ def create_deck():
     p.font.color.rgb = GRAY_LIGHT
 
     # ==========================================
-    # SLIDE 13: CLOSING & USER CONTACT DETAILS
+    # SLIDE 13: CLOSING & ALL 3 CENTRED LOGOS
     # ==========================================
     s13 = prs.slides.add_slide(blank_layout)
     set_background(s13)
 
-    add_card(s13, Inches(0.8), Inches(0.8), Inches(11.733), Inches(5.9))
-    tb_cl = s13.shapes.add_textbox(Inches(1.3), Inches(1.1), Inches(10.733), Inches(5.3))
+    add_card(s13, Inches(0.8), Inches(0.7), Inches(11.733), Inches(6.1))
+    tb_cl = s13.shapes.add_textbox(Inches(1.3), Inches(0.9), Inches(10.733), Inches(5.7))
     tf_cl = tb_cl.text_frame
     tf_cl.word_wrap = True
 
@@ -648,15 +653,15 @@ def create_deck():
     p.font.size = Pt(12)
     p.font.bold = True
     p.font.color.rgb = RED_ACCENT
-    p.space_after = Pt(8)
+    p.space_after = Pt(6)
 
     p = tf_cl.add_paragraph()
     p.text = "Construim împreună un parteneriat memorabil."
     p.font.name = FONT_TITLE
-    p.font.size = Pt(32)
+    p.font.size = Pt(30)
     p.font.bold = True
     p.font.color.rgb = WHITE
-    p.space_after = Pt(20)
+    p.space_after = Pt(16)
 
     p = tf_cl.add_paragraph()
     p.text = "PERSOANĂ DE CONTACT & PARTENERIATE COMERCIALE:"
@@ -664,32 +669,37 @@ def create_deck():
     p.font.size = Pt(11)
     p.font.bold = True
     p.font.color.rgb = RED_LIGHT
-    p.space_after = Pt(6)
+    p.space_after = Pt(4)
 
     p = tf_cl.add_paragraph()
     p.text = "CĂLIN"
     p.font.name = FONT_TITLE
-    p.font.size = Pt(24)
+    p.font.size = Pt(22)
     p.font.bold = True
     p.font.color.rgb = WHITE
-    p.space_after = Pt(8)
+    p.space_after = Pt(4)
 
     p = tf_cl.add_paragraph()
     p.text = "Email: calin@headliners.ro   |   Tel: 0741 143314"
     p.font.name = FONT_MAIN
-    p.font.size = Pt(16)
+    p.font.size = Pt(15)
     p.font.bold = True
     p.font.color.rgb = RED_LIGHT
-    p.space_after = Pt(20)
+    p.space_after = Pt(14)
 
     p = tf_cl.add_paragraph()
     p.text = "Digi24 Ad Media Plan  /  TV Ad Media Plan\nŞos. Panduri 71, sector 5, Bucureşti\nWebsite: www.digi24.ro   |   Facebook: facebook.com/Digi24HD"
     p.font.name = FONT_MAIN
-    p.font.size = Pt(13)
+    p.font.size = Pt(12)
     p.font.color.rgb = GRAY_LIGHT
 
-    if os.path.exists("assets/digi24_logo.png"):
-        s13.shapes.add_picture("assets/digi24_logo.png", Inches(1.3), Inches(5.6), Inches(2.2), Inches(0.8))
+    # 3 Centered Logos on Closing Slide: Digi24 | Headline Management | Headline Production Hub
+    if os.path.exists("assets/logo_digi24_hd.png"):
+        s13.shapes.add_picture("assets/logo_digi24_hd.png", Inches(1.6), Inches(5.7), Inches(0.8), Inches(0.8))
+    if os.path.exists("assets/logo_headline_management.png"):
+        s13.shapes.add_picture("assets/logo_headline_management.png", Inches(3.6), Inches(5.85), Inches(3.6), Inches(0.5))
+    if os.path.exists("assets/logo_headline_production_hub.png"):
+        s13.shapes.add_picture("assets/logo_headline_production_hub.png", Inches(8.2), Inches(5.85), Inches(3.6), Inches(0.5))
 
     output_path = "Scos_din_sarite_cu_Serghei_Sezonul_2_Pitch_Deck.pptx"
     prs.save(output_path)
