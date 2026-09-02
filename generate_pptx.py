@@ -54,9 +54,10 @@ def create_deck():
         p_title.font.bold = True
         p_title.font.color.rgb = WHITE
 
-        # Intermediate Header Co-branding (Digi24 + HLM Minimalist Round Logo)
-        if os.path.exists("assets/logo_digi24_hd.png"):
-            slide.shapes.add_picture("assets/logo_digi24_hd.png", Inches(11.0), Inches(0.4), Inches(0.65), Inches(0.65))
+        # Intermediate Header Co-branding (New Digi24 Logo + HLM Minimalist Round Logo)
+        digi_logo_path = "assets/digi24-dark-background.png" if os.path.exists("assets/digi24-dark-background.png") else "assets/logo_digi24_hd.png"
+        if os.path.exists(digi_logo_path):
+            slide.shapes.add_picture(digi_logo_path, Inches(11.0), Inches(0.4), Inches(0.65), Inches(0.65))
         if os.path.exists("assets/logo_hlm_round_minimal.png"):
             slide.shapes.add_picture("assets/logo_hlm_round_minimal.png", Inches(11.85), Inches(0.4), Inches(0.65), Inches(0.65))
 
@@ -72,7 +73,7 @@ def create_deck():
         return shape
 
     # ==========================================
-    # SLIDE 1: COVER (WITH ALL 3 CENTRED LOGOS)
+    # SLIDE 1: COVER (WITH 3 LOGOS TOP ROW)
     # ==========================================
     s1 = prs.slides.add_slide(blank_layout)
     set_background(s1)
@@ -82,9 +83,21 @@ def create_deck():
         cover_img_path = "assets/serghei_hero_studio.png"
 
     if os.path.exists(cover_img_path):
-        s1.shapes.add_picture(cover_img_path, Inches(6.2), Inches(0.9), Inches(6.5), Inches(4.8))
+        s1.shapes.add_picture(cover_img_path, Inches(6.5), Inches(0.8), Inches(6.2), Inches(5.9))
 
-    tb = s1.shapes.add_textbox(Inches(0.8), Inches(1.3), Inches(5.2), Inches(4.5))
+    # 3 Production Logos on Slide 1 Top: Headline Management -> Digi24 -> Headline Production Hub
+    if os.path.exists("assets/logo_headline_management.png"):
+        s1.shapes.add_picture("assets/logo_headline_management.png", Inches(0.8), Inches(0.7), Inches(2.2), Inches(0.42))
+
+    digi_logo_path = "assets/digi24-dark-background.png" if os.path.exists("assets/digi24-dark-background.png") else "assets/logo_digi24_hd.png"
+    if os.path.exists(digi_logo_path):
+        s1.shapes.add_picture(digi_logo_path, Inches(3.2), Inches(0.62), Inches(0.55), Inches(0.52))
+
+    if os.path.exists("assets/logo_headline_production_hub.png"):
+        s1.shapes.add_picture("assets/logo_headline_production_hub.png", Inches(3.9), Inches(0.7), Inches(2.2), Inches(0.42))
+
+    # Main Title Box
+    tb = s1.shapes.add_textbox(Inches(0.8), Inches(1.6), Inches(5.4), Inches(4.5))
     tf = tb.text_frame
     tf.word_wrap = True
     
@@ -94,7 +107,7 @@ def create_deck():
     p.font.size = Pt(11)
     p.font.bold = True
     p.font.color.rgb = RED_ACCENT
-    p.space_after = Pt(12)
+    p.space_after = Pt(10)
 
     p2 = tf.add_paragraph()
     p2.text = "SCOS DIN SĂRITE\nCU SERGHEI"
@@ -109,17 +122,6 @@ def create_deck():
     p3.font.name = FONT_MAIN
     p3.font.size = Pt(13)
     p3.font.color.rgb = GRAY_LIGHT
-
-    # Footer Card container for centered logos
-    add_card(s1, Inches(0.8), Inches(6.0), Inches(11.733), Inches(1.1), bg_color=CARD_BG, border_color=CARD_BORDER)
-
-    # 3 Centered Logos on Cover: Digi24 | Headline Management | Headline Production Hub
-    if os.path.exists("assets/logo_digi24_hd.png"):
-        s1.shapes.add_picture("assets/logo_digi24_hd.png", Inches(1.6), Inches(6.15), Inches(0.8), Inches(0.8))
-    if os.path.exists("assets/logo_headline_management.png"):
-        s1.shapes.add_picture("assets/logo_headline_management.png", Inches(3.6), Inches(6.3), Inches(3.6), Inches(0.5))
-    if os.path.exists("assets/logo_headline_production_hub.png"):
-        s1.shapes.add_picture("assets/logo_headline_production_hub.png", Inches(8.2), Inches(6.3), Inches(3.6), Inches(0.5))
 
     # ==========================================
     # SLIDE 2: COMBINED CONTEXT & CONCEPT EDITORIAL
@@ -637,69 +639,83 @@ def create_deck():
     p.font.color.rgb = GRAY_LIGHT
 
     # ==========================================
-    # SLIDE 13: CLOSING & ALL 3 CENTRED LOGOS
+    # SLIDE 13: CLOSING & MANDATORY PRODUCTION SECTION
+    # Order: Headline Management -> Digi24 -> Headline Production Hub
+    # Contact: Călin Crețu / calin@headliners.ro / +40 741 143 314
     # ==========================================
     s13 = prs.slides.add_slide(blank_layout)
     set_background(s13)
 
-    add_card(s13, Inches(0.8), Inches(0.7), Inches(11.733), Inches(6.1))
-    tb_cl = s13.shapes.add_textbox(Inches(1.3), Inches(0.9), Inches(10.733), Inches(5.7))
+    add_card(s13, Inches(0.8), Inches(0.6), Inches(11.733), Inches(6.3))
+    tb_cl = s13.shapes.add_textbox(Inches(1.3), Inches(0.8), Inches(10.733), Inches(2.0))
     tf_cl = tb_cl.text_frame
     tf_cl.word_wrap = True
 
     p = tf_cl.paragraphs[0]
     p.text = "SCOS DIN SĂRITE CU SERGHEI — SEZONUL 2"
     p.font.name = FONT_MAIN
-    p.font.size = Pt(12)
+    p.font.size = Pt(11)
     p.font.bold = True
     p.font.color.rgb = RED_ACCENT
-    p.space_after = Pt(6)
+    p.space_after = Pt(4)
 
     p = tf_cl.add_paragraph()
     p.text = "Construim împreună un parteneriat memorabil."
     p.font.name = FONT_TITLE
-    p.font.size = Pt(30)
-    p.font.bold = True
-    p.font.color.rgb = WHITE
-    p.space_after = Pt(16)
-
-    p = tf_cl.add_paragraph()
-    p.text = "PERSOANĂ DE CONTACT & PARTENERIATE COMERCIALE:"
-    p.font.name = FONT_MAIN
-    p.font.size = Pt(11)
-    p.font.bold = True
-    p.font.color.rgb = RED_LIGHT
-    p.space_after = Pt(4)
-
-    p = tf_cl.add_paragraph()
-    p.text = "CĂLIN"
-    p.font.name = FONT_TITLE
-    p.font.size = Pt(22)
+    p.font.size = Pt(28)
     p.font.bold = True
     p.font.color.rgb = WHITE
     p.space_after = Pt(4)
 
     p = tf_cl.add_paragraph()
-    p.text = "Email: calin@headliners.ro   |   Tel: 0741 143314"
+    p.text = "Haideți să discutăm integrarea brandului dumneavoastră în grila de toamnă 2026."
     p.font.name = FONT_MAIN
-    p.font.size = Pt(15)
-    p.font.bold = True
+    p.font.size = Pt(13)
     p.font.color.rgb = RED_LIGHT
-    p.space_after = Pt(14)
 
-    p = tf_cl.add_paragraph()
-    p.text = "Digi24 Ad Media Plan  /  TV Ad Media Plan\nŞos. Panduri 71, sector 5, Bucureşti\nWebsite: www.digi24.ro   |   Facebook: facebook.com/Digi24HD"
-    p.font.name = FONT_MAIN
-    p.font.size = Pt(12)
-    p.font.color.rgb = GRAY_LIGHT
+    # Production Credit Header: O PRODUCȚIE
+    tb_prod = s13.shapes.add_textbox(Inches(1.3), Inches(2.9), Inches(10.733), Inches(0.4))
+    tf_prod = tb_prod.text_frame
+    p_p = tf_prod.paragraphs[0]
+    p_p.alignment = PP_ALIGN.CENTER
+    p_p.text = "O PRODUCȚIE"
+    p_p.font.name = FONT_MAIN
+    p_p.font.size = Pt(11)
+    p_p.font.bold = True
+    p_p.font.color.rgb = GRAY_MUTED
 
-    # 3 Centered Logos on Closing Slide: Digi24 | Headline Management | Headline Production Hub
-    if os.path.exists("assets/logo_digi24_hd.png"):
-        s13.shapes.add_picture("assets/logo_digi24_hd.png", Inches(1.6), Inches(5.7), Inches(0.8), Inches(0.8))
+    # Mandatory 3-Logo Row: 1. Headline Management | 2. Digi24 | 3. Headline Production Hub
     if os.path.exists("assets/logo_headline_management.png"):
-        s13.shapes.add_picture("assets/logo_headline_management.png", Inches(3.6), Inches(5.85), Inches(3.6), Inches(0.5))
+        s13.shapes.add_picture("assets/logo_headline_management.png", Inches(1.8), Inches(3.4), Inches(3.4), Inches(0.6))
+    
+    digi_logo_path = "assets/digi24-dark-background.png" if os.path.exists("assets/digi24-dark-background.png") else "assets/logo_digi24_hd.png"
+    if os.path.exists(digi_logo_path):
+        s13.shapes.add_picture(digi_logo_path, Inches(6.2), Inches(3.3), Inches(0.9), Inches(0.8))
+        
     if os.path.exists("assets/logo_headline_production_hub.png"):
-        s13.shapes.add_picture("assets/logo_headline_production_hub.png", Inches(8.2), Inches(5.85), Inches(3.6), Inches(0.5))
+        s13.shapes.add_picture("assets/logo_headline_production_hub.png", Inches(8.1), Inches(3.4), Inches(3.4), Inches(0.6))
+
+    # Contact Block: Călin Crețu / calin@headliners.ro / +40 741 143 314
+    tb_cnt = s13.shapes.add_textbox(Inches(1.3), Inches(4.5), Inches(10.733), Inches(1.8))
+    tf_cnt = tb_cnt.text_frame
+    tf_cnt.word_wrap = True
+
+    p = tf_cnt.paragraphs[0]
+    p.alignment = PP_ALIGN.CENTER
+    p.text = "Călin Crețu"
+    p.font.name = FONT_TITLE
+    p.font.size = Pt(20)
+    p.font.bold = True
+    p.font.color.rgb = WHITE
+    p.space_after = Pt(6)
+
+    p = tf_cnt.add_paragraph()
+    p.alignment = PP_ALIGN.CENTER
+    p.text = "calin@headliners.ro   |   +40 741 143 314"
+    p.font.name = FONT_MAIN
+    p.font.size = Pt(14)
+    p.font.bold = True
+    p.font.color.rgb = RED_LIGHT
 
     output_path = "Scos_din_sarite_cu_Serghei_Sezonul_2_Pitch_Deck.pptx"
     prs.save(output_path)

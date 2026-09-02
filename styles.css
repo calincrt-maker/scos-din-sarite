@@ -187,9 +187,9 @@ html, body {
   right: 32px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   z-index: 50;
-  background: rgba(14, 16, 23, 0.7);
+  background: rgba(14, 16, 23, 0.75);
   padding: 6px 14px;
   border-radius: 20px;
   border: 1px solid var(--border-card);
@@ -197,53 +197,15 @@ html, body {
 }
 
 .inter-logo-digi {
-  height: 24px;
+  height: 28px;
   width: auto;
   object-fit: contain;
 }
 
 .inter-logo-hlm {
-  height: 26px;
+  height: 28px;
   width: auto;
   object-fit: contain;
-}
-
-/* CENTERED 3-LOGO CLUSTER FOR COVER (SLIDE 1) AND CLOSING (SLIDE 13) */
-.centered-logo-cluster {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 28px;
-  padding: 12px 28px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  margin-top: auto;
-  box-shadow: var(--shadow-card);
-}
-
-.logo-item-digi {
-  height: 32px;
-  width: auto;
-  object-fit: contain;
-}
-
-.logo-item-hlm-full {
-  height: 24px;
-  width: auto;
-  object-fit: contain;
-}
-
-.logo-item-hub-full {
-  height: 24px;
-  width: auto;
-  object-fit: contain;
-}
-
-.logo-divider {
-  width: 1px;
-  height: 24px;
-  background: rgba(255, 255, 255, 0.15);
 }
 
 /* SLIDE LAYOUT CONTENT */
@@ -273,14 +235,14 @@ html, body {
   color: var(--text-white);
   line-height: 1.25;
   margin-bottom: 4px;
-  max-width: 85%;
+  max-width: 82%;
 }
 
 .slide-header-sub {
   font-size: 13px;
   color: var(--text-secondary);
   margin-bottom: 18px;
-  max-width: 85%;
+  max-width: 82%;
 }
 
 .slide-body {
@@ -292,7 +254,30 @@ html, body {
   min-height: 0;
 }
 
-/* COVER LAYOUT */
+/* COVER LAYOUT WITH TOP LOGOS & "PREZINTĂ:" */
+.cover-production-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.cover-logo-row {
+  margin-bottom: 8px !important;
+  justify-content: flex-start !important;
+  max-width: 540px !important;
+  gap: 24px !important;
+}
+
+.presents-label {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red-soft);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
 .layout-cover {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
@@ -309,19 +294,19 @@ html, body {
 
 .cover-title {
   font-family: var(--font-heading);
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 700;
   line-height: 1.1;
   color: var(--text-white);
-  margin: 12px 0;
+  margin: 8px 0 12px 0;
   letter-spacing: -0.5px;
 }
 
 .cover-desc {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--text-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .cover-pills {
@@ -955,40 +940,132 @@ html, body {
   color: var(--text-secondary);
 }
 
-/* CLOSING LAYOUT */
+/* CLOSING LAYOUT & PRODUCTION SECTION */
 .layout-closing {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(230, 20, 50, 0.15) 0%, transparent 70%);
+  padding: 12px 0;
+  background: radial-gradient(circle at center, rgba(230, 20, 50, 0.12) 0%, transparent 75%);
+}
+
+.closing-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .closing-title {
   font-family: var(--font-heading);
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   color: var(--text-white);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .closing-sub {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--red-soft);
+}
+
+.production-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 16px 0;
+}
+
+.production-credit-title {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* MANDATORY 3-LOGO HORIZONTAL COMPOSITION: HEADLINE MANAGEMENT -> DIGI24 -> HEADLINE PRODUCTION HUB */
+.production-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  max-width: 900px;
   margin-bottom: 24px;
 }
 
-.contact-card-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border-card);
-  border-radius: var(--radius-md);
-  padding: 20px 36px;
+.prod-logo-hlm-mgmt {
+  height: 48px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.prod-logo-digi {
+  height: 52px;
+  width: auto;
+  max-width: 90px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+.prod-logo-hlm-hub {
+  height: 48px;
+  width: auto;
+  max-width: 260px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+}
+
+/* CONTACT BLOCK */
+.contact-block {
   display: flex;
   flex-direction: column;
-  gap: 6px;
   align-items: center;
+  gap: 4px;
+}
+
+.contact-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: 0.5px;
+}
+
+.contact-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.contact-link {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--red-soft);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  outline: none;
+}
+
+.contact-link:hover, .contact-link:focus {
+  color: #FFF;
+  text-shadow: 0 0 10px var(--red-glow);
+  text-decoration: underline;
+}
+
+.contact-divider {
+  color: var(--text-muted);
+  font-size: 12px;
 }
 
 /* FLOATING SIDE INDICATORS */
@@ -1162,7 +1239,9 @@ html, body {
   overflow: hidden;
 }
 
-/* MOBILE RESPONSIVE */
+/* ==========================================
+   MOBILE & TABLET RESPONSIVE OPTIMIZATION
+   ========================================== */
 @media (max-width: 900px) {
   .top-nav {
     padding: 0 14px;
@@ -1184,16 +1263,42 @@ html, body {
     padding: 4px 10px;
   }
   .inter-logo-digi {
-    height: 18px;
+    height: 20px;
   }
   .inter-logo-hlm {
     height: 20px;
   }
 
-  .centered-logo-cluster {
-    flex-wrap: wrap;
-    gap: 14px;
-    padding: 10px 16px;
+  /* MOBILE LOGO STACKING: 1. HEADLINE MANAGEMENT -> 2. DIGI24 -> 3. HEADLINE PRODUCTION HUB */
+  .production-logo-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+  }
+
+  .prod-logo-hlm-mgmt {
+    height: 38px !important;
+    max-width: 220px !important;
+  }
+
+  .prod-logo-digi {
+    height: 44px !important;
+    max-width: 80px !important;
+  }
+
+  .prod-logo-hlm-hub {
+    height: 38px !important;
+    max-width: 220px !important;
+  }
+
+  .contact-links {
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+
+  .contact-divider {
+    display: none;
   }
 
   .slide-section {
@@ -1253,11 +1358,6 @@ html, body {
 
   .overview-grid {
     grid-template-columns: 1fr 1fr !important;
-  }
-
-  .contact-card-box {
-    padding: 20px 16px !important;
-    width: 100%;
   }
 }
 

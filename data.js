@@ -262,14 +262,11 @@ window.presentationData = {
       title: "Construim împreună un parteneriat memorabil pentru Sezonul 2.",
       subtitle: "SCOS DIN SĂRITE CU SERGHEI — DIGI24",
       callToAction: "Haideți să discutăm integrarea brandului dumneavoastră în grila de toamnă 2026.",
+      productionCredit: "O PRODUCȚIE",
       contact: {
-        publisher: "Digi24 Ad Media / TV Ad Media Plan",
-        contactPerson: "Călin",
+        name: "Călin Crețu",
         email: "calin@headliners.ro",
-        phone: "0741 143314",
-        address: "Şos. Panduri 71, Sector 5, Bucureşti",
-        web: "www.digi24.ro",
-        fb: "facebook.com/Digi24HD"
+        phone: "+40 741 143 314"
       },
       layout: "closing"
     }
