@@ -1240,84 +1240,98 @@ html, body {
 }
 
 /* ==========================================
-   MOBILE & TABLET RESPONSIVE OPTIMIZATION
+   MOBILE RESPONSIVE OPTIMIZATION (< 768px)
    ========================================== */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  /* HIDE THE 4 TOP CONTROLS (GRID, PPTX, PDF, FULLSCREEN) ON MOBILE */
+  .nav-controls {
+    display: none !important;
+  }
+
+  /* COMPACT MOBILE TOP NAVBAR */
   .top-nav {
-    padding: 0 14px;
+    height: 50px !important;
+    padding: 0 14px !important;
   }
+
   .brand-title {
-    font-size: 12px;
+    font-size: 11px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 200px !important;
   }
-  .btn-nav span {
-    font-size: 11px;
+
+  .brand-badge {
+    font-size: 9px !important;
+    padding: 3px 6px !important;
+  }
+
+  .viewport-container {
+    padding-top: 54px !important;
   }
 
   .side-dots-nav {
-    display: none;
+    display: none !important;
   }
 
   .intermediate-logo-badge {
-    top: 14px;
-    right: 14px;
-    padding: 4px 10px;
-  }
-  .inter-logo-digi {
-    height: 20px;
-  }
-  .inter-logo-hlm {
-    height: 20px;
+    top: 10px !important;
+    right: 10px !important;
+    padding: 3px 8px !important;
   }
 
-  /* MOBILE LOGO STACKING: 1. HEADLINE MANAGEMENT -> 2. DIGI24 -> 3. HEADLINE PRODUCTION HUB */
-  .production-logo-row {
-    flex-direction: column !important;
-    gap: 16px !important;
-    align-items: center !important;
-    margin-bottom: 20px !important;
+  .inter-logo-digi, .inter-logo-hlm {
+    height: 18px !important;
   }
 
-  .prod-logo-hlm-mgmt {
-    height: 38px !important;
-    max-width: 220px !important;
-  }
-
-  .prod-logo-digi {
-    height: 44px !important;
-    max-width: 80px !important;
-  }
-
-  .prod-logo-hlm-hub {
-    height: 38px !important;
-    max-width: 220px !important;
-  }
-
-  .contact-links {
-    flex-direction: column !important;
-    gap: 6px !important;
-  }
-
-  .contact-divider {
-    display: none;
-  }
-
+  /* SLIDE SECTIONS ON MOBILE */
   .slide-section {
-    height: auto;
-    min-height: calc(100vh - 56px);
-    scroll-snap-align: start;
-    padding: 16px 12px 64px 12px;
+    height: auto !important;
+    min-height: calc(100vh - 54px) !important;
+    scroll-snap-align: start !important;
+    padding: 12px 10px 58px 10px !important;
   }
 
   .slide-stage {
-    aspect-ratio: auto;
-    height: auto;
-    min-height: 500px;
+    aspect-ratio: auto !important;
+    height: auto !important;
+    min-height: unset !important;
+    border-radius: var(--radius-md) !important;
   }
 
   .slide-content {
-    padding: 24px 20px;
+    padding: 18px 14px !important;
   }
 
+  /* LOGO ROW ON SLIDE 1 & CLOSING SLIDE */
+  .production-logo-row, .cover-logo-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+
+  .prod-logo-hlm-mgmt, .prod-logo-hlm-hub {
+    max-width: 120px !important;
+    height: 28px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  .prod-logo-digi {
+    max-width: 50px !important;
+    height: 34px !important;
+    width: auto !important;
+    object-fit: contain !important;
+  }
+
+  /* LAYOUT GRIDS ON MOBILE */
   .layout-cover,
   .layout-split,
   .layout-pillars,
@@ -1330,34 +1344,73 @@ html, body {
   .layout-pricing,
   .layout-quote-emotion {
     grid-template-columns: 1fr !important;
-    gap: 18px !important;
+    gap: 14px !important;
   }
 
   .cover-title {
-    font-size: 28px !important;
+    font-size: clamp(22px, 5.5vw, 32px) !important;
+    line-height: 1.2 !important;
+    margin: 6px 0 10px 0 !important;
+  }
+
+  .cover-desc {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 12px !important;
   }
 
   .cover-img-wrapper {
-    max-height: 240px;
+    max-height: 240px !important;
   }
 
   .feature-img-frame,
   .portrait-img-box {
-    height: 240px !important;
+    height: 220px !important;
   }
 
   .stats-row {
     grid-template-columns: 1fr 1fr !important;
-    gap: 10px !important;
+    gap: 8px !important;
   }
 
   .schedule-row {
     grid-template-columns: 1fr !important;
-    gap: 4px;
+    gap: 4px !important;
+  }
+
+  .contact-links {
+    flex-direction: column !important;
+    gap: 4px !important;
+  }
+
+  .contact-divider {
+    display: none !important;
   }
 
   .overview-grid {
     grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* BOTTOM NAVBAR ON MOBILE */
+  .bottom-bar {
+    height: 44px !important;
+    padding: 0 14px max(4px, env(safe-area-inset-bottom)) 14px !important;
+  }
+
+  .slide-counter {
+    white-space: nowrap !important;
+    font-size: 11px !important;
+  }
+
+  .btn-arrow {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+  }
+
+  .progress-track {
+    width: 90px !important;
+    max-width: 90px !important;
   }
 }
 
@@ -1386,3 +1439,4 @@ html, body {
     box-shadow: none;
   }
 }
+
